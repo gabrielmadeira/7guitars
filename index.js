@@ -15,11 +15,10 @@ app.use(session({
 }
 ))
 
-const routes = require('./routes/routesjs')
+const routes = require('./routes/routes')
 
 
-app.use(AgentRoutes);
-app.use(ScientistRoutes);
-app.use(VisitorRoutes);
+app.use(routes);
+
 
 app.listen(3000);

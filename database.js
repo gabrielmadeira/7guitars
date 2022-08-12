@@ -1,11 +1,12 @@
-const mysql = require('mysql2');
+const mongo = require('mongodb');
+var url = "mongodb://localhost:27017/mydb";
 
-const pool = mysql.createPool({
-     host: "",
-     user: "",
-     password: "",
-     database: "",
-     multipleStatements: true
-});
+
+MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    console.log("Database Opened");
+    db.close();
+  });
+  
 
 module.exports = pool.promise();
