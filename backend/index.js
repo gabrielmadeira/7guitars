@@ -1,5 +1,6 @@
 const express = require('express');
-const routes = require('./routes/routeLogin')
+const routes = require('./routes/routes')
+
 const bodyParser = require('body-parser');
 const path = require('path');
 const session=require("express-session");
