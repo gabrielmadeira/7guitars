@@ -7,9 +7,14 @@ exports.getPartofType = async (req, res) => {
 
 exports.registerPart = async (req, res) => {
    const newPart = new part({
+        id:String,
         name:req.body.name,
-        type:req.body.type,
-        price:req.body.price
+        quantity:req.body.quantity,
+        section:req.body.type,
+        price:req.body.price,
+        imageURL:req.body.image,
+        dependency:req.body.dependency
+
    })
    await newPart.save()
    res.send(newPart)
