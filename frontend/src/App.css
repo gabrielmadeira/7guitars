@@ -35,15 +35,32 @@
 	justify-content: center;
 }
 
+.flex {
+  display: flex;
+}
 .loginContainer {
 	width: 100%;
-transform: translateY(-10vh);
+  transform: translateY(-10vh);
+}
+
+.formContainer {
+  min-width: 500px;
+  align-items: center;
+  width: fill;
+  width: 100%;
+
 }
 .login {
-/*	transform:translateY(-50vh); */
+  text-indent: 10px;
 	width: 100%;
-	min-width: 500px;
-border-radius: 50px;
+  max-height: 2em;
+	min-width: 100px;
+  border-radius: 10px;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid white;
+  caret-color: white;
+  color: white;
 }
 
 @keyframes App-logo-spin {
