@@ -28,6 +28,24 @@
   color: #61dafb;
 }
 
+.Center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.loginContainer {
+	width: 100%;
+transform: translateY(-10vh);
+}
+.login {
+/*	transform:translateY(-50vh); */
+	width: 100%;
+	min-width: 500px;
+border-radius: 50px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
