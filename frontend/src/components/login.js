@@ -3,14 +3,12 @@ function Login() {
     <div className="loginContainer">
         <h1 > Login </h1>
 				<form className= "Center">
-					<label className="Center">
-						Email:
-						<input type="text" name="email" className = "login" />
-						Senha:
-						<input type="text" name="senha" className= "login"   />
+					<label   >
+              <input type="text" name="email" placeholder="seuemail@exemplo.com" className="login" />
+              <input type="password" name="senha" className="login" placeholder="suasenha"/>
 					</label>
 					<label>
-						<input type="submit" value="Henrique" />
+						<input type="submit" value="Enviar" />
 					</label>
 				</form>
     </div>

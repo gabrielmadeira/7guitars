@@ -63,6 +63,23 @@
   color: white;
 }
 
+.variacoes {
+  width: 50vw;
+  padding: 10px;
+  min-width: 600px;
+  justify-content: space-between;
+  border: 1px solid white;
+  border-radius: 15px;
+}
+
+.deleteButton {
+  background: transparent;
+  border: 1px solid white;
+}
+
+.aligncenter {
+  align-items: center;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
