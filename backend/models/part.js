@@ -1,12 +1,23 @@
-const mongoose = require("mongoose")
+const part = require("../models/partSchema")
 
-const schema = mongoose.Schema({
-    id:String,
-    name:String,
-    quantity:Integer, 
-    section:String,
-    price:String,
-    imageURL:String,
-    dependency:[Integer]
-})
-module.exports = mongoose.model("Part",schema)
+module.exports = class Part {
+    static async registerPart(req,res){
+        const newPart = new part({
+            id:String,
+            name:req.body.name,
+            quantity:req.body.quantity,
+            section:req.body.type,
+            price:req.body.price,
+            imageURL:req.body.image,
+            dependency:req.body.dependency
+    
+       })
+       await newPart.save()
+       res.send(newPart)
+    }
+    static async getPartofType(req,res){
+        const findUser = await part.find({ type: req.query.type})
+        res.send(findUser)
+    }
+
+}

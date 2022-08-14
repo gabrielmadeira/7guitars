@@ -1,23 +1,12 @@
 const part = require("../models/part")
 
 exports.getPartofType = async (req, res) => {
-    const findUser = await part.find({ type: req.query.type})
-    res.send(findUser)
+    part.getPartofType(req,res)
 }
 
 exports.registerPart = async (req, res) => {
-   const newPart = new part({
-        id:String,
-        name:req.body.name,
-        quantity:req.body.quantity,
-        section:req.body.type,
-        price:req.body.price,
-        imageURL:req.body.image,
-        dependency:req.body.dependency
+    part.registerPart(req,res)
 
-   })
-   await newPart.save()
-   res.send(newPart)
 }
 
 
