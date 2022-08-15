@@ -1,18 +1,18 @@
-import React from "react";
-import Variacoes from "./variacoes";
+import React from 'react';
+import Variacoes from './variacoes';
 
-import { Component } from "react";
+import { Component } from 'react';
 
 class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pecaNome: "corda",
+      pecaNome: 'corda',
       id: 0,
-      value: "",
-      price: "",
-      description: "",
-      quantity: "",
+      value: '',
+      price: '',
+      description: '',
+      quantity: '',
       postArray: [],
       sorted: false,
       newPostArray: [],
@@ -28,7 +28,7 @@ class Admin extends Component {
 
   async componentDidMount() {
     const response = await fetch(
-      "http://localhost:3000/getPartsOfType?section=" + this.state.pecaNome
+      'http://localhost:3000/getPartsOfType?section=' + this.state.pecaNome
     );
     const data = await response.json();
     this.setState({ postArray: data.Variacoes });
@@ -47,7 +47,7 @@ class Admin extends Component {
   }
 
   handleKeyPress(e) {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       this.pushTodo();
     }
   }
@@ -65,9 +65,9 @@ class Admin extends Component {
       this.state.postArray.unshift(post);
       this.setState({
         list: this.state.list,
-        value: "",
-        price: "",
-        description: "",
+        value: '',
+        price: '',
+        description: '',
         id: this.state.id + 1,
       });
     }
@@ -122,11 +122,7 @@ class Admin extends Component {
         </div>
 
         <div className="todoContainer">
-          <Variacoes
-            changeDone={this.changeDone}
-            deletePost={this.deletePost}
-            postList={this.state.postArray}
-          />
+          <Variacoes deletePost={this.deletePost} postList={this.state.postArray} />
         </div>
 
         {this.state.newPostArray.Variacoes}
