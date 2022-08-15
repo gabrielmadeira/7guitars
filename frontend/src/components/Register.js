@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { React, useState } from 'react';
 
 function Register() {
+  const [name, setName] = useState('');
+  const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,6 +14,8 @@ function Register() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        name,
+        cpf,
         email,
         password,
       }),
@@ -25,6 +29,24 @@ function Register() {
       <h1> Register </h1>
       <form className="Center" onSubmit={registerUser}>
         <label className="Center">
+          Nome:
+          <input
+            type="text"
+            value={name}
+            name="name"
+            className="login"
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Nome Completo"
+          />
+          Documento de Identificação (CPF):
+          <input
+            type="text"
+            value={cpf}
+            name="cpf"
+            className="login"
+            onChange={(e) => setCpf(e.target.value)}
+            placeholder="CPF"
+          />
           Email:
           <input
             type="text"
