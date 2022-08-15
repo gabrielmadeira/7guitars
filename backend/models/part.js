@@ -34,5 +34,11 @@ module.exports = class Part {
         }
         )
     }
+    static async deletePart(req, res) {
+        await part.deleteOne({ section: req.body.section ,name:req.body.name}).then((parts) => {
+            res.status(204)
+        }
+        )
+    }
 
 }
