@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav mr-auto">
+          <div className=" collapse navbar-collapse">
+            <ul className=" navbarContainer navbar-nav mr-auto">
               <li className="navbar-item">
                 <Link to="/" className="nav-link">
                   Login
