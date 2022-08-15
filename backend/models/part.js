@@ -34,11 +34,17 @@ module.exports = class Part {
         }
         )
     }
+    //espera name e section para deletar objeto
     static async deletePart(req, res) {
-        await part.deleteOne({ section: req.body.section ,name:req.body.name}).then((parts) => {
+        await part.deleteOne({ section: req.body.section ,name:req.body.name}).then((part) => {
             res.status(204)
         }
         )
+    }
+    //espera name, section e quantity para atualizar o objeto
+    static async updateQuantity(req,res){
+        await part.updateOne({section:req.body.section,name:req.body.name},{$set: {quantity: req.body.quantity}})
+        res.status(200)
     }
 
 }
