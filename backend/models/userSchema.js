@@ -2,9 +2,8 @@ const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
   name: String,
-  id: String,
-  email: String,
   cpf: String,
+  email: String,
   hash: String,
   isAdmin: Boolean,
 });
