@@ -28,9 +28,8 @@ module.exports = class User {
       bcrypt.hash(req.body.password, 12).then(async (hashedPassword) => {
         const newUser = new user({
           name: req.body.name,
-          id: req.body.id,
-          email: req.body.email,
           cpf: req.body.cpf,
+          email: req.body.email,
           hash: hashedPassword,
           isAdmin: req.body.admin,
         });
