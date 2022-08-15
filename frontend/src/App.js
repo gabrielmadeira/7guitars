@@ -1,10 +1,9 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Login from './pages/Login';
-import Register from './pages/Register';
-
-// import axios from 'axios';
+import Login from './components/Login';
+import Register from './components/Register';
+import Admin from './components/admin';
 
 function App() {
   return (
@@ -23,6 +22,11 @@ function App() {
                   Register
                 </Link>
               </li>
+              <li className="navbar-item">
+                <Link to="/getPartsOfType" className="nav-link">
+                  Admin
+                </Link>
+              </li>
             </ul>
           </div>
         </nav>
@@ -31,6 +35,7 @@ function App() {
           <Routes>
             <Route path="/" exact element={<Login />} />
             <Route path="/register" exact element={<Register />} />
+            <Route path="/getPartsOfType" exact element={<Admin />} />
           </Routes>
         </header>
       </BrowserRouter>

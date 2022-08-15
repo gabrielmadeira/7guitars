@@ -14,13 +14,24 @@
   </form>
 
   <form action="http://localhost:3000/getPartsOfType" method="get">
-    <input name="type" value="string">    
+    <input name="section" value="string">    
     <button>get parts of type</button>
   </form>
 
   <form action="http://localhost:3000/registerPart" method="post">
     <input name="name" value="flatwounds">
-    <input name="type" value="string">
+    <input name="section" value="string">
     <input name="price" value="30">
+    <input name="quantity" value="30">
+    <input name="description" value="description">
     <button>register part</button>
+  </form>
+
+  <form action="http://localhost:3000/registerSection" method="post">
+    <input name="name" value="strings">
+    <button>register section</button>
+  </form>
+
+  <form action="http://localhost:3000/getAllSections" method="get">
+    <button>get sections</button>
   </form>
