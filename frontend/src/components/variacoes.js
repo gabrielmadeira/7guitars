@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import '../App.css';
+import React, { useState } from "react";
+import "../App.css";
 
 function Variacoes(obj) {
   let [quantity, setQuantity] = useState(0);
@@ -7,54 +7,52 @@ function Variacoes(obj) {
 
   async function updateQuantity(event) {
     event.preventDefault();
-    console.log('POST ARRAY: ', postArray);
-    console.log('quantity: ', quantity);
-    console.log('value: ', event.target);
+    console.log("POST ARRAY: ", postArray);
+    console.log("quantity: ", quantity);
+    console.log("value: ", event.target);
   }
 
   if (postArray && obj) {
     const posts = postArray.map((x) => (
-      <div key={x.id} className="Center admin ">
-        <div className="flex">
-          <div className="flex variacoes">
+      <div key={x.id} className="Center admin campoInsercao ">
+          <div className="variacoes">
             <div className="varianteContainer">
-              <div className="flex aligncenter">
-                <h3> Nome:</h3>
-                <p> {x.text} </p>
+              <div className="flex">
+                <p>   <b> Nome: </b> 
+                {x.text} </p>
               </div>
               <div className="flex aligncenter">
-                <h3> Preço: </h3>
-                <p> {x.price} </p>
+                <p>   <b> Preço: </b> 
+                 {" "+x.price} </p>
               </div>
               <div className="flex aligncenter">
-                <h3> Descricao: </h3>
-                <p> {x.description} </p>
+                <p>   <b> Descrição: </b> 
+                 {x.description} </p>
               </div>
               <div className="flex aligncenter">
-                <h3> Quantidade: </h3>
-                <p> {x.quantity} </p>
+                <p>   <b> Quantidade: </b>  </p>
+                <input
+                  type="text"
+                  name="quantidade"
+                  placeholder="alterar quantidade"
+                  className="input"
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
               </div>
-              <form className="Center" onSubmit={updateQuantity}>
-                <label>
-                  <input
-                    type="text"
-                    name="quantidade"
-                    placeholder="alterar quantidade"
-                    className="login"
-                    value={quantity}
-                    onChange={(e) => setQuantity(e.target.value)}
-                  />
-                </label>
-                <label>
-                  <input type="submit" value="salvar" />
-                </label>
-              </form>
             </div>
-            <button onClick={() => obj.deletePost(x.id)} className="deleteButton">
-              X
+            <input 
+              type="submit"
+              value="Salvar"
+              className="variacoesButtons"
+            />
+            <button
+              onClick={() => obj.deletePost(x.id)}
+              className="variacoesButtons"
+            >
+              Deletar
             </button>
           </div>
-        </div>
       </div>
     ));
 

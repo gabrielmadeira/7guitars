@@ -11,7 +11,6 @@ function GerenciarEstoque() {
   let [quantity, setQuantity] = useState(0);
   let [sorted, setSorted] = useState(false);
   let [postArray, setPostArray] = useState([]);
-  let [newPostArray, setNewPostArray] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,42 +66,43 @@ function GerenciarEstoque() {
   }
 
   return (
-    <div className="main">
+    <div className="main Center">
       <h1> {pecaNome} </h1>
-      <div className="Center">
-        <input
-          onKeyPress={handleKeyPress}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          className="input"
-          type="text"
-          id="input"
-          placeholder="Insira variação "
-          autoComplete="off"
-        ></input>
+      <div className="flex">
+        <div className="flex Center">
+          <input
+            onKeyPress={handleKeyPress}
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            className="input"
+            type="text"
+            id="input"
+            placeholder="Insira variação "
+            autoComplete="off"
+          ></input>
 
-        <input
-          onKeyPress={handleKeyPress}
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          className="input"
-          type="text"
-          id="input"
-          placeholder="Insira o preço "
-          autoComplete="off"
-        ></input>
-        <input
-          onKeyPress={handleKeyPress}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="input"
-          type="text"
-          id="input"
-          placeholder="Insira a descrição "
-          autoComplete="off"
-        ></input>
-
-        <button className="button addButton" onClick={pushTodo}>
+          <input
+            onKeyPress={handleKeyPress}
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            className="input"
+            type="text"
+            id="input"
+            placeholder="Insira o preço "
+            autoComplete="off"
+          ></input>
+          <input
+            onKeyPress={handleKeyPress}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="input"
+            type="text"
+            id="input"
+            placeholder="Insira a descrição "
+            autoComplete="off"
+          ></input>
+         </div>
+        <button className="button variacoesButtons" onClick={pushTodo}>
           Adicionar
         </button>
       </div>
@@ -116,7 +116,6 @@ function GerenciarEstoque() {
         />
       </div>
 
-      {newPostArray.Variacoes}
     </div>
   );
 }

@@ -1,3 +1,12 @@
+* { 
+  padding: 0px;
+  border: 0px;
+  margin: 0px;
+}
+
+p {
+  font-size: 0.8em;
+}
 .App {
   text-align: center;
 }
@@ -5,12 +14,6 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -28,6 +31,28 @@
   color: #61dafb;
 }
 
+
+.navbarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px;
+  background-color: rgb(35,39,48);
+}
+
+.navbarContainer li {
+  padding: 20px;
+  list-style: none;
+}
+
+.nav-link {
+  color: white;
+  font-size: 1.4em;
+  text-decoration: none;
+}
+.flex {
+  display: flex;
+}
 .Center {
   display: flex;
   flex-direction: column;
@@ -38,6 +63,7 @@
 .flex {
   display: flex;
 }
+
 .loginContainer {
   width: 100%;
   transform: translateY(-10vh);
@@ -68,16 +94,39 @@
   min-width: 600px;
   justify-content: space-between;
   border: 1px solid white;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
-.deleteButton {
+.variacoesButtons {
   background: transparent;
   border: 1px solid white;
+  padding: 15px;
+  margin: 2vw;
+  border-radius: 10px;
+  color: white;
+}
+
+.variacoesButtons:hover {
+  background-color: white;
+  color: #404443;
+  transform: scale(0.9);
+}
+
+.deleteButton:hover {
+  background-color: red;
 }
 
 .aligncenter {
   align-items: center;
+}
+
+.input {
+  text-indent: 5px;
+  padding: 5px;
+}
+
+.campoInsercao {
+  margin: 20px;
 }
 @keyframes App-logo-spin {
   from {
