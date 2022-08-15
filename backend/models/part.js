@@ -16,15 +16,20 @@ module.exports = class Part {
         await part.find({ section: req.query.section }).then((parts) => {
             console.log(req.query)
             console.log(parts[0].section)
-            var returnJson = " {Nome:" + parts[0].section + ", Variacoes:[";
+            const body={
+                Nome:req.query,
+                Variacoes:[]
+            }
             parts.forEach(part => {
-                returnJson += "{nome:" + part.name + ","
-                returnJson += "preco:" + part.price + ","
-                returnJson += "quantidade:"+ part.quantity+","
-                returnJson += "descricao:" + part.description + ",},"
+                const variantions={
+                    text:part.name,
+                    price:part.price,
+                    quantity:part.quantity,
+                    description:part.description
+                }
+                body.Variacoes.push(variantions)
             });
-            returnJson += "],}"
-            res.send(returnJson)
+            res.json(body)
         }
         )
     }

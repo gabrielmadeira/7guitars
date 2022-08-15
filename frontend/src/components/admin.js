@@ -31,8 +31,7 @@ class Admin extends Component {
       "http://localhost:3000/getPartsOfType?section=" + this.state.pecaNome
     );
     const data = await response.json();
-    console.log(data)
-    this.setState({ newPostArray: data.total });
+    this.setState({ postArray: data.Variacoes });
   }
 
   handleChange(e) {
@@ -130,7 +129,7 @@ class Admin extends Component {
           />
         </div>
 
-        {this.state.newPostArray.nome}
+        {this.state.newPostArray.Variacoes}
         {/*
          */}
       </div>
