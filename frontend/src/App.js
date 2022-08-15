@@ -3,6 +3,7 @@ import Test from './Test';
 import Login from './components/login';
 import Register from './components/register';
 import Admin from './components/admin';
+import User from './components/user';
 import './App.css';
 
 function App() {

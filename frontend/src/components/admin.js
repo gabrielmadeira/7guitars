@@ -129,9 +129,7 @@ class Admin extends Component {
           />
         </div>
 
-        {newPostArray.nome}
-        {/*
-         */}
+        {this.state.newPostArray.nome}
       </div>
     );
   }
