@@ -13,7 +13,8 @@ module.exports = class Part {
         res.send(newPart)
     }
     static async getPartofType(req, res) {
-        await part.find({ type: req.query.type }).then((parts) => {
+        await part.find({ section: req.query.section }).then((parts) => {
+            console.log(req.query)
             console.log(parts[0].section)
             var returnJson = " {Nome:" + parts[0].section + ", Variacoes:[";
             parts.forEach(part => {

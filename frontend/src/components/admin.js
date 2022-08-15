@@ -7,7 +7,7 @@ class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pecaNome: "Corda",
+      pecaNome: "corda",
       id: 0,
       value: "",
       price: "",
@@ -28,9 +28,10 @@ class Admin extends Component {
 
   async componentDidMount() {
     const response = await fetch(
-      "http://localhost:3000/getPartsOfType?type=" + this.state.pecaNome
+      "http://localhost:3000/getPartsOfType?section=" + this.state.pecaNome
     );
     const data = await response.json();
+    console.log(data)
     this.setState({ newPostArray: data.total });
   }
 
@@ -129,7 +130,7 @@ class Admin extends Component {
           />
         </div>
 
-        {newPostArray.nome}
+        {this.state.newPostArray.nome}
         {/*
          */}
       </div>

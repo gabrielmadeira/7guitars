@@ -19,6 +19,7 @@
   "homepage": "https://github.com/gabrielmadeira/7guitars#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "mongodb": "^4.8.1",

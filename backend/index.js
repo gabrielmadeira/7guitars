@@ -1,5 +1,6 @@
 const express = require('express');
 const routes = require('./routes/routes')
+const cors = require('cors');
 
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -10,6 +11,7 @@ mongoose
     .connect("mongodb+srv://user:123@cluster0.lbbstum.mongodb.net/test", { useNewUrlParser: true })
     .then(()=>{
         const app = express();
+        app.use(cors())
         app.use(bodyParser.urlencoded({ extended: false }));
         app.use(bodyParser.json());
         app.use(express.static(path.join(__dirname, 'public')));
