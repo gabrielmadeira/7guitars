@@ -7,12 +7,15 @@ class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      pecaNome: "Corda",
       id: 0,
       value: "",
       price: "",
       description: "",
+      quantity: "",
       postArray: [],
       sorted: false,
+      newPostArray: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,6 +24,14 @@ class Admin extends Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.pushTodo = this.pushTodo.bind(this);
     this.deletePost = this.deletePost.bind(this);
+  }
+
+  async componentDidMount() {
+    const response = await fetch(
+      "http://localhost:3000/getPartsOfType?type=" + this.state.pecaNome
+    );
+    const data = await response.json();
+    this.setState({ newPostArray: data.total });
   }
 
   handleChange(e) {
@@ -35,7 +46,6 @@ class Admin extends Component {
     this.setState({ description: e.target.value });
   }
 
-
   handleKeyPress(e) {
     if (e.key === "Enter") {
       this.pushTodo();
@@ -47,8 +57,8 @@ class Admin extends Component {
       const post = {
         id: this.state.id,
         text: this.state.value,
-        price : this.state.price,
-        description : this.state.description,
+        price: this.state.price,
+        description: this.state.description,
         done: false,
       };
 
@@ -106,7 +116,6 @@ class Admin extends Component {
             autocomplete="off"
           ></input>
 
-
           <button className="button addButton" onClick={this.pushTodo}>
             Adicionar
           </button>
@@ -120,8 +129,9 @@ class Admin extends Component {
           />
         </div>
 
-          { /*
-          */ }
+        {newPostArray.nome}
+        {/*
+         */}
       </div>
     );
   }
