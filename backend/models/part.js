@@ -22,6 +22,7 @@ module.exports = class Part {
             }
             parts.forEach(part => {
                 const variantions={
+                    id:part._id,
                     text:part.name,
                     price:part.price,
                     quantity:part.quantity,
