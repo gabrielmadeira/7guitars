@@ -5,6 +5,7 @@ function Register() {
   const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [admin] = useState(false);
 
   async function registerUser(event) {
     event.preventDefault();
@@ -18,6 +19,7 @@ function Register() {
         cpf,
         email,
         password,
+        admin,
       }),
     });
 
