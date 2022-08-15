@@ -22,6 +22,7 @@ module.exports = class Part {
             }
             parts.forEach(part => {
                 const variantions={
+                    id:part._id,
                     text:part.name,
                     price:part.price,
                     quantity:part.quantity,
@@ -32,6 +33,18 @@ module.exports = class Part {
             res.json(body)
         }
         )
+    }
+    //espera name e section para deletar objeto
+    static async deletePart(req, res) {
+        await part.deleteOne({ section: req.body.section ,name:req.body.name}).then((part) => {
+            res.status(204)
+        }
+        )
+    }
+    //espera name, section e quantity para atualizar o objeto
+    static async updateQuantity(req,res){
+        await part.updateOne({section:req.body.section,name:req.body.name},{$set: {quantity: req.body.quantity}})
+        res.status(200)
     }
 
 }

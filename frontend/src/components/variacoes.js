@@ -7,9 +7,9 @@ function Variacoes(obj) {
 
   async function updateQuantity(event) {
     event.preventDefault();
-    console.log('POST ARRAY: ', postArray);
-    console.log('quantity: ', quantity);
-    console.log('value: ', event.target);
+    console.log('POST ARRAY: ', postArray); // remover
+    console.log('quantity: ', quantity); // remover
+    console.log('value: ', event.target); // remover
   }
 
   if (postArray && obj) {

@@ -28,7 +28,7 @@ function GerenciarEstoque() {
     setPostArray(postArray.filter((post) => post.id !== postId));
   }
 
-  async function pushTodo(event) {
+  async function addPart(event) {
     if (value) {
       const post = {
         id: id,
@@ -36,7 +36,6 @@ function GerenciarEstoque() {
         price: price,
         description: description,
         quantity: quantity,
-        done: false,
       };
 
       postArray.unshift(post);
@@ -62,7 +61,7 @@ function GerenciarEstoque() {
 
   function handleKeyPress(e) {
     if (e.key === 'Enter') {
-      pushTodo();
+      addPart();
     }
   }
 
@@ -102,7 +101,7 @@ function GerenciarEstoque() {
           autoComplete="off"
         ></input>
 
-        <button className="button addButton" onClick={pushTodo}>
+        <button className="button addButton" onClick={addPart}>
           Adicionar
         </button>
       </div>
