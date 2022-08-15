@@ -3,7 +3,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
-import Admin from './components/admin';
+import AdminPanel from './components/AdminPanel';
+import GerenciarEstoque from './components/GerenciarEstoque';
 
 function App() {
   return (
@@ -23,8 +24,13 @@ function App() {
                 </Link>
               </li>
               <li className="navbar-item">
+                <Link to="/adminPanel" className="nav-link">
+                  Admin Panel
+                </Link>
+              </li>
+              <li className="navbar-item">
                 <Link to="/getPartsOfType" className="nav-link">
-                  Admin
+                  Gerenciar Estoque
                 </Link>
               </li>
             </ul>
@@ -35,7 +41,8 @@ function App() {
           <Routes>
             <Route path="/" exact element={<Login />} />
             <Route path="/register" exact element={<Register />} />
-            <Route path="/getPartsOfType" exact element={<Admin />} />
+            <Route path="/getPartsOfType" exact element={<GerenciarEstoque />} />
+            <Route path="/adminPanel" exact element={<AdminPanel />} />
           </Routes>
         </header>
       </BrowserRouter>

@@ -29,32 +29,31 @@
 }
 
 .Center {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .flex {
   display: flex;
 }
 .loginContainer {
-	width: 100%;
+  width: 100%;
   transform: translateY(-10vh);
 }
 
 .formContainer {
   min-width: 500px;
   align-items: center;
-  width: fill;
+  width: stretch;
   width: 100%;
-
 }
 .login {
   text-indent: 10px;
-	width: 100%;
+  width: 100%;
   max-height: 2em;
-	min-width: 100px;
+  min-width: 100px;
   border-radius: 10px;
   background-color: transparent;
   outline: none;
