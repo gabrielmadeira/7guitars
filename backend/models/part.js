@@ -2,6 +2,7 @@ const part = require("../models/partSchema")
 
 module.exports = class Part {
     static async registerPart(req, res) {
+        console.log(req.body.name)
         const newPart = new part({
             name: req.body.name,
             quantity: req.body.quantity,
@@ -14,8 +15,6 @@ module.exports = class Part {
     }
     static async getPartofType(req, res) {
         await part.find({ section: req.query.section }).then((parts) => {
-            console.log(req.query)
-            console.log(parts[0].section)
             const body={
                 Nome:req.query,
                 Variacoes:[]
@@ -43,6 +42,7 @@ module.exports = class Part {
     }
     //espera name, section e quantity para atualizar o objeto
     static async updateQuantity(req,res){
+        console.log(req.body)
         await part.updateOne({section:req.body.section,name:req.body.name},{$set: {quantity: req.body.quantity}})
         res.status(200)
     }

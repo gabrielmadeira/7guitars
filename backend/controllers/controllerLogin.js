@@ -4,6 +4,7 @@ exports.login = async (req, res) => {
     user.login(req,res)
 }
 exports.isAdmin = async (req, res,next) => {
+    console.log(req.session.admin)
     if(req.session.admin){
         next()
     }
@@ -15,6 +16,9 @@ exports.isAdmin = async (req, res,next) => {
 
 exports.registerUser = async (req, res) => {
     user.register(req,res)
+}
+exports.allUsers = async (req, res) => {
+    user.allUsers(req,res)
 }
 
 
