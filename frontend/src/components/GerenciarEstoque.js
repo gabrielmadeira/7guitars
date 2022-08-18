@@ -81,6 +81,18 @@ function GerenciarEstoque() {
     }
   }
 
+  function mapVariacoes() {
+    console.log("chegou");
+    let posts = postArray.map((x) => (
+        <Variacoes
+          deletePost={deletePost}
+          setQuantity={setQuantity}
+          post={x}
+          setPostArray={setPostArray}
+        />
+    ))
+    return posts;
+  }
   return (
     <div className="main Center">
       <h1> {pecaNome} </h1>
@@ -124,12 +136,7 @@ function GerenciarEstoque() {
       </div>
 
       <div className="todoContainer">
-        <Variacoes
-          deletePost={deletePost}
-          setQuantity={setQuantity}
-          postList={postArray}
-          setPostArray={setPostArray}
-        />
+        {mapVariacoes()}
       </div>
     </div>
   );
