@@ -9,9 +9,8 @@ function Register() {
 
   async function registerUser(event) {
     event.preventDefault();
-    const response = await fetch('http://127.0.0.1:3000/register', {
+    const response = await fetch('http://localhost:3000/register', {
       method: 'POST',
-      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -26,12 +25,10 @@ function Register() {
 
     const data = await response.json();
     console.log(data);
-    if(data){
-      alert("Login bem sucedido")
-    }
-    else{
-      alert("Falha no Login")
-
+    if (data) {
+      alert('Login bem sucedido');
+    } else {
+      alert('Falha no Login');
     }
   }
   return (
