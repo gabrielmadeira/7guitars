@@ -36,7 +36,6 @@ function GerenciarEstoque() {
         description: description,
         quantity: quantity,
       };
-      
 
       postArray.unshift(post);
 
@@ -45,16 +44,20 @@ function GerenciarEstoque() {
       setDescription('');
       setId(id + 1);
       //todo fix this conversion
-      const obj={name:post.text,quantity:post.quantity,section:"corda",price:post.price,description:post.description}
+      const obj = {
+        name: post.text,
+        quantity: post.quantity,
+        section: 'corda',
+        price: post.price,
+        description: post.description,
+      };
       const response = await fetch('http://localhost:3000/registerPart', {
         method: 'POST',
-        credentials : "include",
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(
-          obj
-        ),
+        body: JSON.stringify(obj),
       });
       const data = await response.json();
       console.log(data);

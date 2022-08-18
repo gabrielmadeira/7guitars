@@ -1,15 +1,44 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import '../App.css';
 
 function Variacoes(obj) {
-  let [quantity, setQuantity] = useState(0);
-  let postArray = obj.postList;
+  const [quantity, setQuantity] = useState(0);
+  const postArray = obj.postList;
 
-  async function updateQuantity(event) {
-    event.preventDefault();
+  async function updateQuantity(postId) {
     console.log('POST ARRAY: ', postArray); // remover
-    console.log('quantity: ', quantity); // remover
-    console.log('value: ', event.target); // remover
+    postArray.filter((post) => {
+      if (post.id === postId) {
+        console.log('POST: ', post);
+        post.quantity = quantity;
+        // obj.
+
+        // const response = await fetch('http://localhost:3000/updateQuant', {
+        //   method: 'PUT',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body:{
+
+        //   }
+        // });
+      }
+    });
+    // const data = await response.json();
+    // console.log(data);
+  }
+
+  async function deletePost(postId, name) {
+    const response = await fetch('http://localhost:3000/deletePart', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(obj),
+    });
+    const data = await response.json();
+    console.log(data);
   }
 
   if (postArray && obj) {
@@ -41,19 +70,28 @@ function Variacoes(obj) {
             <div className="flex aligncenter">
               <p>
                 {' '}
-                <b> Quantidade: </b>{' '}
+                <b> Quantidade: </b>
+                {x.quantity}{' '}
               </p>
-              <input
-                type="text"
-                name="quantidade"
-                placeholder="alterar quantidade"
-                className="input"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
-              />
             </div>
+            <input
+              type="text"
+              name="quantidade"
+              placeholder="alterar quantidade"
+              className="input"
+              onChange={(e) => setQuantity(e.target.value)}
+            />
+            <div className="flex aligncenter"></div>
           </div>
-          <input type="submit" value="Salvar" className="variacoesButtons" />
+          <button
+            onClick={() => {
+              setQuantity(0); // TODO: gambiarra MUDAR
+              return updateQuantity(x.id);
+            }}
+            className="variacoesButtons"
+          >
+            Salvar
+          </button>
           <button onClick={() => obj.deletePost(x.id)} className="variacoesButtons">
             Deletar
           </button>
