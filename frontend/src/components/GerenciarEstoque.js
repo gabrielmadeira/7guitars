@@ -63,6 +63,7 @@ function GerenciarEstoque() {
       };
       const response = await fetch('http://localhost:3000/registerPart', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },

@@ -26,9 +26,9 @@ function Register() {
     const data = await response.json();
     console.log(data);
     if (data) {
-      alert('Login bem sucedido');
+      alert('Registro bem sucedido');
     } else {
-      alert('Falha no Login');
+      alert('Falha no Registro');
     }
   }
   return (

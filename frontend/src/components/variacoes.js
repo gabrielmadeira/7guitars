@@ -2,14 +2,27 @@ import React, { useState } from 'react';
 import '../App.css';
 
 function Variacoes(obj) {
-  let [quantity, setQuantity] = useState(0);
-  let postArray = obj.postList;
+  const [quantity, setQuantity] = useState(0);
+  const postArray = obj.postList;
 
-  async function updateQuantity(event) {
-    event.preventDefault();
-    console.log('POST ARRAY: ', postArray); // remover
-    console.log('quantity: ', quantity); // remover
-    console.log('value: ', event.target); // remover
+  async function updateQuantity(postId) {
+    postArray.filter((post) => {
+      if (post.id === postId) {
+        console.log('POST: ', post);
+        post.quantity = quantity;
+        // obj.
+
+        // const response = await fetch('http://localhost:3000/updateQuant', {
+        //   method: 'PUT',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body:{
+
+        //   }
+        // });
+      }
+    });
   }
 
   if (postArray && obj) {
@@ -41,20 +54,32 @@ function Variacoes(obj) {
             <div className="flex aligncenter">
               <p>
                 {' '}
-                <b> Quantidade: </b>{' '}
+                <b> Quantidade: </b> {x.quantity}{' '}
               </p>
+            </div>
+            <div className="flex aligncenter">
               <input
                 type="text"
                 name="quantidade"
                 placeholder="alterar quantidade"
                 className="input"
-                value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
               />
             </div>
           </div>
-          <input type="submit" value="Salvar" className="variacoesButtons" />
-          <button onClick={() => obj.deletePost(x.id,x.text)} className="variacoesButtons">
+          <button
+            onClick={() => {
+              setQuantity(0); // TODO: gambiarra MUDAR
+              return updateQuantity(x.id);
+            }}
+            className="variacoesButtons"
+          >
+            Salvar
+          </button>
+          <button
+            onClick={() => obj.deletePost(x.id, x.text)}
+            className="variacoesButtons"
+          >
             Deletar
           </button>
         </div>
