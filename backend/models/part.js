@@ -35,6 +35,7 @@ module.exports = class Part {
     }
     //espera name e section para deletar objeto
     static async deletePart(req, res) {
+        console.log("received delete request")
         await part.deleteOne({ section: req.body.section ,name:req.body.name}).then((part) => {
             res.status(204)
         }

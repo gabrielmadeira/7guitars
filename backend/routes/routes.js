@@ -9,7 +9,7 @@ router.get('/getPartsOfType', controllerPart.getPartofType);
 router.get('/getAllSections',controllerSection.getSections);
 router.get('/all',controllerLogin.allUsers);
 
-router.post('/registerPart',controllerLogin.isAdmin,controllerPart.registerPart);
+router.post('/registerPart',controllerPart.registerPart);
 router.put('/updateQuant',controllerPart.updateQuantity);
 router.delete('/deletePart',controllerPart.deletePart);
 router.post('/registerSection',controllerSection.registerSection);

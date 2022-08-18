@@ -54,7 +54,7 @@ function Variacoes(obj) {
             </div>
           </div>
           <input type="submit" value="Salvar" className="variacoesButtons" />
-          <button onClick={() => obj.deletePost(x.id)} className="variacoesButtons">
+          <button onClick={() => obj.deletePost(x.id,x.text)} className="variacoesButtons">
             Deletar
           </button>
         </div>
