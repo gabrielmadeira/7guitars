@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Variacoes from './variacoes';
-
+axios.defaults.withCredentials = true;
 function GerenciarEstoque() {
   let [pecaNome, setPecaNome] = useState('corda'); // TODO: change later
   let [id, setId] = useState(0);
@@ -23,8 +23,20 @@ function GerenciarEstoque() {
     fetchData();
   }, []);
 
-  function deletePost(postId) {
+  async function deletePost(postId, name) {
     setPostArray(postArray.filter((post) => post.id !== postId));
+    const obj = { name: name, section: 'corda' };
+    const response = await fetch('localhost:3000/deletePart', {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+
+      body: JSON.stringify(obj),
+    });
+    const data = await response.json();
+    console.log(data);
   }
 
   async function addPart(event) {

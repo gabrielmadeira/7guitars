@@ -92,7 +92,10 @@ function Variacoes(obj) {
           >
             Salvar
           </button>
-          <button onClick={() => obj.deletePost(x.id)} className="variacoesButtons">
+          <button
+            onClick={() => obj.deletePost(x.id, x.text)}
+            className="variacoesButtons"
+          >
             Deletar
           </button>
         </div>

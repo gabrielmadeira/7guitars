@@ -10,8 +10,8 @@ router.get('/getAllSections',controllerSection.getSections);
 router.get('/all',controllerLogin.allUsers);
 
 router.post('/registerPart',controllerLogin.isAdmin,controllerPart.registerPart);
-router.put('/updateQuant',controllerPart.updateQuantity);
-router.delete('/deletePart',controllerPart.deletePart);
-router.post('/registerSection',controllerSection.registerSection);
+router.put('/updateQuant',controllerLogin.isAdmin,controllerPart.updateQuantity);
+router.delete('/deletePart',controllerLogin.isAdmin,controllerPart.deletePart);
+router.post('/registerSection',controllerLogin.isAdmin,controllerSection.registerSection);
 module.exports = router;
 

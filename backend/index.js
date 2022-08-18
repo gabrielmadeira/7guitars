@@ -14,10 +14,11 @@ mongoose
   .then(() => {
     const app = express();
     const corsOptions = {
+      // origin: 'http://127.0.0.1:3001',
       optionsSuccessStatus: 200,
       credentials: true,
-    }
-    app.use(cors(corsOptions))
+    };
+    app.use(cors(corsOptions));
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     app.use(express.static(path.join(__dirname, 'public')));
