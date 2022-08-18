@@ -19,6 +19,13 @@ function Login() {
 
     const data = await response.json();
     console.log(data);
+    if(data){
+      alert("Login bem sucedido")
+    }
+    else{
+      alert("Falha no Login")
+
+    }
   }
   return (
     <div className="loginContainer">

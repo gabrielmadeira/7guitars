@@ -13,7 +13,11 @@ mongoose
   })
   .then(() => {
     const app = express();
-    app.use(cors());
+    const corsOptions = {
+      optionsSuccessStatus: 200,
+      credentials: true,
+    }
+    app.use(cors(corsOptions))
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     app.use(express.static(path.join(__dirname, 'public')));

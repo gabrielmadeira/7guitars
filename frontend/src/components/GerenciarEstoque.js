@@ -44,9 +44,11 @@ function GerenciarEstoque() {
       setPrice('');
       setDescription('');
       setId(id + 1);
+      //todo fix this conversion
       const obj={name:post.text,quantity:post.quantity,section:"corda",price:post.price,description:post.description}
       const response = await fetch('http://localhost:3000/registerPart', {
         method: 'POST',
+        credentials : "include",
         headers: {
           'Content-Type': 'application/json',
         },

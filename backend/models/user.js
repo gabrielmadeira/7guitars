@@ -3,9 +3,7 @@ const bcrypt = require('bcryptjs');
 
 module.exports = class User {
   static async login(req, res) {
-    console.log(req.body.email)
     await user.findOne({ email: req.body.email }).then((findUser) => {
-      console.log(findUser)
       if (findUser) {
         bcrypt.compare(req.body.password, findUser.hash).then((check) => {
           if (check) {

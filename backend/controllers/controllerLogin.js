@@ -4,7 +4,8 @@ exports.login = async (req, res) => {
     user.login(req,res)
 }
 exports.isAdmin = async (req, res,next) => {
-    console.log(req.session.admin)
+    console.log("te")
+    console.log(req.session)
     if(req.session.admin){
         next()
     }
