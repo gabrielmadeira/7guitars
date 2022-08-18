@@ -14,8 +14,9 @@ mongoose
   .then(() => {
     const app = express();
     const corsOptions = {
+      origin: 'http://127.0.0.1:3001',
       optionsSuccessStatus: 200,
-      credentials: true,
+      credentials: true
     }
     app.use(cors(corsOptions))
     app.use(bodyParser.urlencoded({ extended: false }));

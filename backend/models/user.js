@@ -7,8 +7,6 @@ module.exports = class User {
       if (findUser) {
         bcrypt.compare(req.body.password, findUser.hash).then((check) => {
           if (check) {
-            console.log(findUser.name);
-            console.log(findUser.isAdmin);
             req.session.loggedIn = true;
             req.session.name = findUser.name;
             req.session.admin = findUser.isAdmin;
