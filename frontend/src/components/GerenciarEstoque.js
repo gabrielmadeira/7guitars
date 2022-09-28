@@ -26,11 +26,13 @@ function GerenciarEstoque() {
   async function deletePost(postId, name) {
     setPostArray(postArray.filter((post) => post.id !== postId));
     const obj = { name: name, section: 'corda' };
-    const response = await fetch('http://localhost:3000/deletePart', {
+    const response = await fetch('http://127.0.0.1:3000/deletePart', {
       method: 'DELETE',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
+
       body: JSON.stringify(obj),
     });
     const data = await response.json();
@@ -61,7 +63,11 @@ function GerenciarEstoque() {
         price: post.price,
         description: post.description,
       };
+<<<<<<< HEAD
       const response = await fetch('http://localhost:3000/registerPart', {
+=======
+      const response = await fetch('http://127.0.0.1:3000/registerPart', {
+>>>>>>> 558fa2b5002722177b4be13520873b4fa16d40a1
         method: 'POST',
         credentials: 'include',
         headers: {
