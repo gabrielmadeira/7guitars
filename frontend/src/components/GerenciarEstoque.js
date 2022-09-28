@@ -26,13 +26,11 @@ function GerenciarEstoque() {
   async function deletePost(postId, name) {
     setPostArray(postArray.filter((post) => post.id !== postId));
     const obj = { name: name, section: 'corda' };
-    const response = await fetch('localhost:3000/deletePart', {
+    const response = await fetch('http://localhost:3000/deletePart', {
       method: 'DELETE',
-      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
-
       body: JSON.stringify(obj),
     });
     const data = await response.json();

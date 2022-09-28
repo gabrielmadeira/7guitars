@@ -7,7 +7,6 @@ function Variacoes(obj) {
   const postArray = obj.postList;
 
   async function updateQuantity(postId) {
-    console.log('POST ARRAY: ', postArray); // remover
     postArray.filter((post) => {
       if (post.id === postId) {
         console.log('POST: ', post);
@@ -25,6 +24,7 @@ function Variacoes(obj) {
         // });
       }
     });
+<<<<<<< HEAD
     // const data = await response.json();
     // console.log(data);
   }
@@ -39,6 +39,8 @@ function Variacoes(obj) {
     });
     const data = await response.json();
     console.log(data);
+=======
+>>>>>>> 599d4e3c25df04221253d1eda9d934287e149e31
   }
 
   if (postArray && obj) {
@@ -70,9 +72,23 @@ function Variacoes(obj) {
             <div className="flex aligncenter">
               <p>
                 {' '}
+<<<<<<< HEAD
                 <b> Quantidade: </b>
                 {x.quantity}{' '}
               </p>
+=======
+                <b> Quantidade: </b> {x.quantity}{' '}
+              </p>
+            </div>
+            <div className="flex aligncenter">
+              <input
+                type="text"
+                name="quantidade"
+                placeholder="alterar quantidade"
+                className="input"
+                onChange={(e) => setQuantity(e.target.value)}
+              />
+>>>>>>> 599d4e3c25df04221253d1eda9d934287e149e31
             </div>
             <input
               type="text"
