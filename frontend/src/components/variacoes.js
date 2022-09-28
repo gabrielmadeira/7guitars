@@ -24,7 +24,6 @@ function Variacoes(obj) {
         // });
       }
     });
-<<<<<<< HEAD
     // const data = await response.json();
     // console.log(data);
   }
@@ -39,8 +38,6 @@ function Variacoes(obj) {
     });
     const data = await response.json();
     console.log(data);
-=======
->>>>>>> 599d4e3c25df04221253d1eda9d934287e149e31
   }
 
   if (postArray && obj) {
@@ -72,11 +69,6 @@ function Variacoes(obj) {
             <div className="flex aligncenter">
               <p>
                 {' '}
-<<<<<<< HEAD
-                <b> Quantidade: </b>
-                {x.quantity}{' '}
-              </p>
-=======
                 <b> Quantidade: </b> {x.quantity}{' '}
               </p>
             </div>
@@ -88,7 +80,6 @@ function Variacoes(obj) {
                 className="input"
                 onChange={(e) => setQuantity(e.target.value)}
               />
->>>>>>> 599d4e3c25df04221253d1eda9d934287e149e31
             </div>
             <input
               type="text"

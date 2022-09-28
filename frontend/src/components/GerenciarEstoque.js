@@ -63,11 +63,7 @@ function GerenciarEstoque() {
         price: post.price,
         description: post.description,
       };
-<<<<<<< HEAD
-      const response = await fetch('http://localhost:3000/registerPart', {
-=======
       const response = await fetch('http://127.0.0.1:3000/registerPart', {
->>>>>>> 558fa2b5002722177b4be13520873b4fa16d40a1
         method: 'POST',
         credentials: 'include',
         headers: {
