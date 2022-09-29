@@ -4,8 +4,13 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { Home } from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Biblioteca from './pages/Biblioteca';
+import Carrinho from './pages/Carrinho';
+import GerenciarEstoque from './pages/GerenciarEstoque';
+import MeusPedidos  from './pages/MeusPedidos';
+import MontarInstrumento  from './pages/MontarInstrumento';
+import AnaliseDePedidos  from './pages/AnaliseDePedidos';
 import AdminPanel from './components/AdminPanel';
-import GerenciarEstoque from './components/GerenciarEstoque';
 
 function App() {
   return (
@@ -41,8 +46,14 @@ function App() {
         <Route path="/" exact element={<Home />} />
         <Route path="/login" exact element={<Login />} />
         <Route path="/register" exact element={<Register />} />
-        <Route path="/getPartsOfType" exact element={<GerenciarEstoque />} />
-        <Route path="/adminPanel" exact element={<AdminPanel />} />
+        {/* User Routes */ }
+        <Route path="/montarinstrumento" exact element={<MontarInstrumento />} />
+        <Route path="/biblioteca" exact element={<Biblioteca />} />
+        <Route path="/carrinho" exact element={<Carrinho />} />
+        <Route path="/meuspedidos" exact element={<MeusPedidos />} />
+        {/* Adm Routes */ }
+        <Route path="/gerenciarestoque" exact element={<GerenciarEstoque />} />
+        <Route path="/analisedepedidos" exact element={<AnaliseDePedidos />} />
       </Routes>
     </div>
   );

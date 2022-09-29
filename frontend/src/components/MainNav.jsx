@@ -13,6 +13,12 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { Logo } from "./Logo";
 import { Link } from "react-router-dom";
 
+const navBarPerUser = {
+  user: ["Montar Instrumento", "Biblioteca", "Carrinho", "Meus Pedidos"],
+  loggedOut: ["Login", "Register"],
+  adm: ["Gerenciar Estoque", "Analise de Pedidos"],
+};
+
 export default function MainNav(userType) {
   const { isOpen, onToggle } = useDisclosure();
 
@@ -55,11 +61,6 @@ export default function MainNav(userType) {
   );
 }
 
-const navBarPerUser = {
-  user: ["Montar Instrumento", "Biblioteca", "Carrinho", "Meus Pedidos"],
-  loggedOut: ["Login", "Register"],
-  adm: ["Gerenciar Estoque", "Analise de Pedidos"],
-};
 
 function CreateNavText(userType) {
   // TODO MUDAR AQUI
@@ -91,36 +92,6 @@ function mapByUserType(userType) {
   ));
 }
 
-const notLoogedIn = () => {
-  return (
-    <div>
-      <HStack spacing={"5rem"} pr={"5rem"}>
-        <Link to="/login">
-          <Button
-            // as={'a'}
-            fontSize={"md"}
-            color={"white"}
-            fontWeight={400}
-            variant={"link"}
-          >
-            Login
-          </Button>
-        </Link>
-        <Link to="/register">
-          <Button
-            // as={'a'}
-            fontSize={"md"}
-            color={"white"}
-            fontWeight={400}
-            variant={"link"}
-          >
-            Register
-          </Button>
-        </Link>
-      </HStack>
-    </div>
-  );
-};
 {
   /* 
 
