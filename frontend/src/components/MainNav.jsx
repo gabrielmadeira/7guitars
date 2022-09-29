@@ -45,7 +45,7 @@ export default function MainNav() {
           <HStack spacing={'5rem'} pr={'5rem'}>
             <Link to="/login">
               <Button
-                as={'a'}
+                // as={'a'}
                 fontSize={'md'}
                 color={'white'}
                 fontWeight={400}
@@ -56,7 +56,7 @@ export default function MainNav() {
             </Link>
             <Link to="/register">
               <Button
-                as={'a'}
+                // as={'a'}
                 fontSize={'md'}
                 color={'white'}
                 fontWeight={400}
