@@ -4,6 +4,7 @@ import {
   IconButton,
   Button,
   Stack,
+  HStack,
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
@@ -41,10 +42,9 @@ export default function MainNav() {
 
         <Stack justify={'space-between'} direction={'row'} align={'center'} w={'100%'}>
           <Logo h="10vmin" pointerEvents="none" justify={'flex-start'} />
-          <Box>
-            <Link to="/signin">
+          <HStack spacing={'5rem'} pr={'5rem'}>
+            <Link to="/login">
               <Button
-                mr={'5rem'}
                 as={'a'}
                 fontSize={'md'}
                 color={'white'}
@@ -54,9 +54,8 @@ export default function MainNav() {
                 Login
               </Button>
             </Link>
-            <Link to="/signin">
+            <Link to="/register">
               <Button
-                mr={'5rem'}
                 as={'a'}
                 fontSize={'md'}
                 color={'white'}
@@ -66,7 +65,7 @@ export default function MainNav() {
                 Register
               </Button>
             </Link>
-          </Box>
+          </HStack>
           {/* <Button
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}

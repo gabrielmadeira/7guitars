@@ -11,7 +11,7 @@ import {
   InputLeftElement,
   Button,
 } from '@chakra-ui/react';
-import '../styles/Home.css';
+import '../styles/styles.css';
 import MainNav from '../components/MainNav';
 
 export const Home = () => {

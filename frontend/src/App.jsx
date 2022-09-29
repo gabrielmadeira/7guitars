@@ -2,7 +2,7 @@ import React from 'react';
 import './styles/App.css';
 import { Routes, Route, Link } from 'react-router-dom';
 import { Home } from './pages/Home';
-import Login from './components/Login';
+import Login from './pages/Login';
 import Register from './components/Register';
 import AdminPanel from './components/AdminPanel';
 import GerenciarEstoque from './components/GerenciarEstoque';
@@ -39,6 +39,7 @@ function App() {
 
       <Routes>
         <Route path="/" exact element={<Home />} />
+        <Route path="/login" exact element={<Login />} />
         <Route path="/register" exact element={<Register />} />
         <Route path="/getPartsOfType" exact element={<GerenciarEstoque />} />
         <Route path="/adminPanel" exact element={<AdminPanel />} />
