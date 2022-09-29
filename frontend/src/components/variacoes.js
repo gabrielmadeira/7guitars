@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import '../App.css';
 
 function Variacoes(obj) {
@@ -23,6 +24,20 @@ function Variacoes(obj) {
         // });
       }
     });
+    // const data = await response.json();
+    // console.log(data);
+  }
+
+  async function deletePost(postId, name) {
+    const response = await fetch('http://localhost:3000/deletePart', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(obj),
+    });
+    const data = await response.json();
+    console.log(data);
   }
 
   if (postArray && obj) {
@@ -66,6 +81,14 @@ function Variacoes(obj) {
                 onChange={(e) => setQuantity(e.target.value)}
               />
             </div>
+            <input
+              type="text"
+              name="quantidade"
+              placeholder="alterar quantidade"
+              className="input"
+              onChange={(e) => setQuantity(e.target.value)}
+            />
+            <div className="flex aligncenter"></div>
           </div>
           <button
             onClick={() => {

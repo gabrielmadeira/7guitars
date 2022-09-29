@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Variacoes from './variacoes';
-
+axios.defaults.withCredentials = true;
 function GerenciarEstoque() {
   let [pecaNome, setPecaNome] = useState('corda'); // TODO: change later
   let [id, setId] = useState(0);
@@ -26,11 +26,13 @@ function GerenciarEstoque() {
   async function deletePost(postId, name) {
     setPostArray(postArray.filter((post) => post.id !== postId));
     const obj = { name: name, section: 'corda' };
-    const response = await fetch('http://localhost:3000/deletePart', {
+    const response = await fetch('http://127.0.0.1:3000/deletePart', {
       method: 'DELETE',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
+
       body: JSON.stringify(obj),
     });
     const data = await response.json();
@@ -61,7 +63,7 @@ function GerenciarEstoque() {
         price: post.price,
         description: post.description,
       };
-      const response = await fetch('http://localhost:3000/registerPart', {
+      const response = await fetch('http://127.0.0.1:3000/registerPart', {
         method: 'POST',
         credentials: 'include',
         headers: {
