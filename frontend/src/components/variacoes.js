@@ -29,7 +29,7 @@ function Variacoes(obj) {
   }
 
   async function deletePost(postId, name) {
-    const response = await fetch('http://localhost:3000/deletePart', {
+    const response = await fetch('https://sevenguitars.herokuapp.com/deletePart', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
