@@ -48,7 +48,7 @@ export default function MainNav(userType) {
           w={"100%"}
         >
           <Logo h="10vmin" pointerEvents="none" justify={"flex-start"} />
-          {CreateNavText("test")}
+          {CreateNavText("user")}
         </Stack>
       </Flex>
     </Box>
@@ -56,14 +56,14 @@ export default function MainNav(userType) {
 }
 
 const navBarPerUser = {
-  user: ["MontarInstrumento", "Biblioteca", "Carrinho", "AcompanharPedidos"],
+  user: ["Montar Instrumento", "Biblioteca", "Carrinho", "Meus Pedidos"],
   loggedOut: ["Login", "Register"],
-  adm: ["GerenciarEstoque", "AnalisePedidos"],
+  adm: ["Gerenciar Estoque", "Analise de Pedidos"],
 };
 
 function CreateNavText(userType) {
   // TODO MUDAR AQUI
-  userType = "loggedOut";
+  userType = "user";
   return (
     <HStack
       spacing={"5rem"}
@@ -77,7 +77,7 @@ function CreateNavText(userType) {
 
 function mapByUserType(userType) {
   return navBarPerUser[userType].map((x) => (
-    <Link to={ "/" + x.toLowerCase()}>
+    <Link to={ "/" + x.toLowerCase().replace(/\s+/g, '')}>
       <Button
         // as={'a'}
         fontSize={"md"}
