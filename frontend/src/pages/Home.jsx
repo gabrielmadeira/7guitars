@@ -11,10 +11,8 @@ import {
   InputLeftElement,
   Button,
 } from '@chakra-ui/react';
-import { SearchIcon } from '@chakra-ui/icons';
 import '../styles/Home.css';
 import MainNav from '../components/MainNav';
-// import { Logo } from '../components/Logo';
 
 export const Home = () => {
   return (

@@ -39,18 +39,35 @@ export default function MainNav() {
           />
         </Flex>
 
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={'flex-end'}
-          direction={'row'}
-          spacing={6}
-        >
-          <Link to="/signin">
-            <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'}>
-              Inscrever-se
-            </Button>
-          </Link>
-          <Button
+        <Stack justify={'space-between'} direction={'row'} align={'center'} w={'100%'}>
+          <Logo h="10vmin" pointerEvents="none" justify={'flex-start'} />
+          <Box>
+            <Link to="/signin">
+              <Button
+                mr={'5rem'}
+                as={'a'}
+                fontSize={'md'}
+                color={'white'}
+                fontWeight={400}
+                variant={'link'}
+              >
+                Login
+              </Button>
+            </Link>
+            <Link to="/signin">
+              <Button
+                mr={'5rem'}
+                as={'a'}
+                fontSize={'md'}
+                color={'white'}
+                fontWeight={400}
+                variant={'link'}
+              >
+                Register
+              </Button>
+            </Link>
+          </Box>
+          {/* <Button
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
             fontWeight={600}
@@ -62,7 +79,7 @@ export default function MainNav() {
             }}
           >
             Oferecer Serviço
-          </Button>
+          </Button> */}
           {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
         </Stack>
       </Flex>
