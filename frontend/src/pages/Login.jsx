@@ -35,7 +35,7 @@ function Login() {
     // });
     const response = await fetch('https://sevenguitars.herokuapp.com/login', {
       method: 'POST',
-      credentials: 'include',
+      // credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -99,13 +99,7 @@ function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </FormControl>
-              <Button
-                width="full"
-                mt={4}
-                type="submit"
-                variantColor="teal"
-                variant="outline"
-              >
+              <Button width="full" mt={4} type="submit">
                 Sign In
               </Button>
             </form>
