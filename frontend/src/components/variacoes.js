@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../App.css';
+import '../styles/App.css';
 
 function Variacoes(obj) {
   const [quantity, setQuantity] = useState(0);
