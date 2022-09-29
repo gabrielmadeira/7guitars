@@ -1,0 +1,16 @@
+body {
+  overflow: hidden;
+}
+.home {
+  background-image: url('../assets/images/stephen-niemeier.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+.loginContainer {
+  background-image: url('../assets/images/stephen-niemeier.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}

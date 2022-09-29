@@ -14,6 +14,9 @@ function GerenciarEstoque() {
 
   useEffect(() => {
     const fetchData = async () => {
+      // const response = await axios(
+      //   'http://localhost:3000/getPartsOfType?section=' + pecaNome
+      // );
       const response = await axios(
         'https://sevenguitars.herokuapp.com/getPartsOfType?section=' + pecaNome
       );
@@ -26,6 +29,15 @@ function GerenciarEstoque() {
   async function deletePost(postId, name) {
     setPostArray(postArray.filter((post) => post.id !== postId));
     const obj = { name: name, section: 'corda' };
+    // const response = await fetch('http://127.0.0.1:3000/deletePart', {
+    //   method: 'DELETE',
+    //   credentials: 'include',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+
+    //   body: JSON.stringify(obj),
+    // });
     const response = await fetch('https://sevenguitars.herokuapp.com/deletePart', {
       method: 'DELETE',
       credentials: 'include',
@@ -63,7 +75,15 @@ function GerenciarEstoque() {
         price: post.price,
         description: post.description,
       };
-      const response = await fetch('http://127.0.0.1:3000/registerPart', {
+      // const response = await fetch('http://127.0.0.1:3000/registerPart', {
+      //   method: 'POST',
+      //   credentials: 'include',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(obj),
+      // });
+      const response = await fetch('https://sevenguitars.herokuapp.com/deletePart', {
         method: 'POST',
         credentials: 'include',
         headers: {
