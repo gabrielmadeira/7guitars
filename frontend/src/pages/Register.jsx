@@ -4,11 +4,8 @@ import {
   Flex,
   Box,
   Heading,
-  VStack,
-  Grid,
+  HStack,
   theme,
-  InputGroup,
-  InputLeftElement,
   Button,
   FormControl,
   FormLabel,
@@ -17,49 +14,92 @@ import {
 import MainNav from '../components/MainNav';
 
 function Register() {
+  const [name, setName] = useState('');
+  const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [endereco, setEnd] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [endereco, setEndereco] = useState('');
+  const [admin] = useState(false);
+  const [error, setError] = useState({
+    password: '',
+    confirmPassword: ''
+  })
 
-  async function loginUser(event) {
+  async function registerUser(event) {
     event.preventDefault();
-    // const response = await fetch('http://localhost:3000/login', {
+    // const response = await fetch('http://127.0.0.1:3000/register', {
     //   method: 'POST',
-    //   // credentials: 'include',
+    //   credentials: 'include',
     //   headers: {
     //     'Content-Type': 'application/json',
     //   },
-    //   body: JSON.stringify({
-    //     email,
-    //     password,
-    //   }),
-    // });
-    const response = await fetch('https://sevenguitars.herokuapp.com/login', {
+    const response = await fetch('https://sevenguitars.herokuapp.com/register', {
       method: 'POST',
       // credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        name,
+        cpf,
         email,
         password,
+        admin,
       }),
     });
 
     const data = await response.json();
     console.log(data);
     if (data) {
-      alert('Login bem sucedido');
+      alert('Registro bem sucedido');
     } else {
-      alert('Falha no Login');
+      alert('Falha no Registro');
     }
   }
+
+  const onInputChange = e => {
+    const { name, value } = e.target;
+    if (name === 'password') {
+      setPassword(value)
+    } else if (name === 'confirmPassword') {
+      setConfirmPassword(value)
+    }    
+    validateInput(e);
+  }
+
+  const validateInput = e => {
+    let { name, value } = e.target;
+    setError(prev => {
+      const stateObj = { ...prev, [name]: "" };
+ 
+      switch (name) { 
+        case "password":
+          if (confirmPassword && value !== confirmPassword) {
+            stateObj["confirmPassword"] = "As senhas não são iguais";
+          } else {
+            stateObj["confirmPassword"] = confirmPassword ? "" : error.confirmPassword;
+          }
+          break;
+ 
+        case "confirmPassword":
+          if (password && value !== password) {
+            stateObj[name] = "As senhas não são iguais";
+          }
+          break;
+ 
+        default:
+          break;
+      }
+ 
+      return stateObj;
+    });
+  };
+
   return (
     <ChakraProvider theme={theme}>
       <MainNav />
       <Flex
-        // className="loginContainer"
         width="full"
         height="full"
         align="flex-start"
@@ -80,48 +120,77 @@ function Register() {
             boxShadow="lg"
             bgColor="white"
           >
-            <form onSubmit={loginUser}>
-              <FormControl isRequired>
-                <FormLabel>Email</FormLabel>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="seu@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </FormControl>
-              <FormControl mt={6} isRequired>
-                <FormLabel>Password</FormLabel>
-                <Input
-                  type="password"
-                  name="senha"
-                  placeholder="*******"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-
-              </FormControl>
-              <FormControl mt={6} isRequired>
-                <FormLabel>CPF</FormLabel>
-                <Input
-                  type="text"
-                  name="cpf"
-                  placeholder="Seu CPF"
-                  value={cpf}
-                  onChange={(e) => setCpf(e.target.value)}
-                />
-              </FormControl>
-              <FormControl mt={6} isRequired>
-                <FormLabel>Endereço</FormLabel>
-                <Input
-                  type="text"
-                  name="endereco"
-                  placeholder="Seu endereço"
-                  value={endereco}
-                  onChange={(e) => setEnd(e.target.value)}
-                />
-              </FormControl>
+            <form onSubmit={registerUser}>
+              <HStack spacing={6}>
+                <FormControl isRequired>
+                  <FormLabel>Nome</FormLabel>
+                  <Input
+                    type="text"
+                    name="nome"
+                    placeholder="Nome Completo"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </FormControl>
+                <FormControl isRequired>
+                  <FormLabel>Email</FormLabel>
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="seu@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </FormControl>
+              </HStack>
+              <HStack spacing={6} mt={6}>
+                <FormControl isRequired>
+                  <FormLabel>Senha</FormLabel>
+                  <Input
+                    type="password"
+                    name="password"
+                    placeholder="*******"
+                    value={password}
+                    onChange={onInputChange}
+                    onBlur={validateInput}
+                  />
+                  {error.password && <span className='err'>{error.password}</span>}
+                </FormControl>
+                <FormControl isRequired>
+                  <FormLabel>Confirme Senha</FormLabel>
+                  <Input
+                    type="password"
+                    name="confirmPassword"
+                    placeholder="*******"
+                    value={confirmPassword}
+                    onChange={onInputChange}
+                    onBlur={validateInput}
+                  />
+                  {error.confirmPassword && <span className='err'>{error.confirmPassword}</span>}
+                </FormControl>
+              </HStack>
+              <HStack spacing={6} mt={6}>
+                <FormControl isRequired>
+                  <FormLabel>CPF</FormLabel>
+                  <Input
+                    type="text"
+                    name="cpf"
+                    placeholder="Seu CPF"
+                    value={cpf}
+                    onChange={(e) => setCpf(e.target.value)}
+                  />
+                </FormControl>
+                <FormControl isRequired>
+                  <FormLabel>Endereço</FormLabel>
+                  <Input
+                    type="text"
+                    name="endereco"
+                    placeholder="Seu endereço"
+                    value={endereco}
+                    onChange={(e) => setEndereco(e.target.value)}
+                  />
+                </FormControl>
+              </HStack>
 
               <Button width="full" mt={4} type="submit">
                 Sign In
@@ -131,35 +200,6 @@ function Register() {
         </Box>
       </Flex>
     </ChakraProvider>
-
-    // <div className="loginContainer">
-    //   <h1> Login </h1>
-    //   <form className="Center" onSubmit={loginUser}>
-    //     <label className="Center">
-    //       Email:
-    //       <input
-    //         type="text"
-    //         value={email}
-    //         name="email"
-    //         className="login"
-    //         onChange={(e) => setEmail(e.target.value)}
-    //         placeholder="Email"
-    //       />
-    //       Senha:
-    //       <input
-    //         type="text"
-    //         value={password}
-    //         name="senha"
-    //         className="login"
-    //         onChange={(e) => setPassword(e.target.value)}
-    //         placeholder="Senha"
-    //       />
-    //     </label>
-    //     <label>
-    //       <input type="submit" value="Enviar" />
-    //     </label>
-    //   </form>
-    // </div>
   );
 }
 
