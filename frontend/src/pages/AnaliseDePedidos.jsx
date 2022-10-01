@@ -29,7 +29,7 @@ function AnaliseDePedidos() {
       >
         <Box p={6}>
           <Box my={12} textAlign="center">
-            <Heading color="black">AnaliseDePedidos</Heading>
+            <Heading color="black">Analise de Pedidos</Heading>
           </Box>
         </Box>
       </Flex>
