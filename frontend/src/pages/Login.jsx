@@ -4,11 +4,7 @@ import {
   Flex,
   Box,
   Heading,
-  VStack,
-  Grid,
   theme,
-  InputGroup,
-  InputLeftElement,
   Button,
   FormControl,
   FormLabel,
@@ -19,6 +15,7 @@ import MainNav from '../components/MainNav';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [type, setType] = useState('loggedOut');
 
   async function loginUser(event) {
     event.preventDefault();
@@ -48,6 +45,7 @@ function Login() {
     const data = await response.json();
     console.log(data);
     if (data) {
+      setType('user');
       alert('Login bem sucedido');
     } else {
       alert('Falha no Login');
@@ -55,7 +53,7 @@ function Login() {
   }
   return (
     <ChakraProvider theme={theme}>
-      <MainNav />
+      <MainNav userType={type}/>
       <Flex
         // className="loginContainer"
         width="full"
@@ -107,35 +105,6 @@ function Login() {
         </Box>
       </Flex>
     </ChakraProvider>
-
-    // <div className="loginContainer">
-    //   <h1> Login </h1>
-    //   <form className="Center" onSubmit={loginUser}>
-    //     <label className="Center">
-    //       Email:
-    //       <input
-    //         type="text"
-    //         value={email}
-    //         name="email"
-    //         className="login"
-    //         onChange={(e) => setEmail(e.target.value)}
-    //         placeholder="Email"
-    //       />
-    //       Senha:
-    //       <input
-    //         type="text"
-    //         value={password}
-    //         name="senha"
-    //         className="login"
-    //         onChange={(e) => setPassword(e.target.value)}
-    //         placeholder="Senha"
-    //       />
-    //     </label>
-    //     <label>
-    //       <input type="submit" value="Enviar" />
-    //     </label>
-    //   </form>
-    // </div>
   );
 }
 
