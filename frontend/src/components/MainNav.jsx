@@ -20,7 +20,7 @@ const navBarPerUser = {
   adm: ["Gerenciar Estoque", "Analise de Pedidos"],
 };
 
-const MainNav = ({ userType='user'}) => {
+const MainNav = ({ userType='adm'}) => {
   
 
   const { isOpen, onToggle } = useDisclosure();
@@ -78,8 +78,8 @@ function CreateNavText(userType) {
 }
 
 function mapByUserType(userType) {  
-  return navBarPerUser[userType].map((x) => (
-    <Link to={ "/" + x.toLowerCase().replace(/\s+/g, '')}>
+  return navBarPerUser[userType].map((x, index) => (
+    <Link key={index} to={ "/" + x.toLowerCase().replace(/\s+/g, '')}>
       <Button
         fontSize={"md"}
         color={"white"}

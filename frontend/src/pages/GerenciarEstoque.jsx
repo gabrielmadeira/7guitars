@@ -18,46 +18,59 @@ import {
   Input,
 } from "@chakra-ui/react";
 import MainNav from "../components/MainNav";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 function GerenciarEstoque() {
-  let [pecaNome, setPecaNome] = useState("corda"); // TODO: change later
+  let [parteNome, setParteNome] = useState(''); // TODO: change later
   let [id, setId] = useState(0);
-  let [value, setValue] = useState("");
-  let [price, setPrice] = useState("");
-  let [description, setDescription] = useState("");
+  let [value, setValue] = useState('');
+  let [price, setPrice] = useState('');
+  let [description, setDescription] = useState('');
   let [quantity, setQuantity] = useState(0);
   let [sorted, setSorted] = useState(false);
+  let [partesArray, setPartesArray] = useState([]);
   let [postArray, setPostArray] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios(
+  //       "https://sevenguitars.herokuapp.com/getPartsOfType?section=" + pecaNome
+  //     );
+  //     const data = response.data;
+  //     setPostArray(data.Variacoes);
+  //   };
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios(
-        "https://sevenguitars.herokuapp.com/getPartsOfType?section=" + pecaNome
+        "https://sevenguitars.herokuapp.com/getAllSections"
       );
       const data = response.data;
-      setPostArray(data.Variacoes);
+      setPartesArray(data);
     };
     fetchData();
   }, []);
 
-  async function deletePost(postId, name) {
-    setPostArray(postArray.filter((post) => post.id !== postId));
-    const obj = { name: name, section: "corda" };
-    const response = await fetch(
-      "https://sevenguitars.herokuapp.com/deletePart",
-      {
-        method: "DELETE",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
+  // async function deletePost(postId, name) {
+  //   setPostArray(postArray.filter((post) => post.id !== postId));
+  //   const obj = { name: name, section: "corda" };
+  //   const response = await fetch(
+  //     "https://sevenguitars.herokuapp.com/deletePart",
+  //     {
+  //       method: "DELETE",
+  //       credentials: "include",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
 
-        body: JSON.stringify(obj),
-      }
-    );
-    const data = await response.json();
-    console.log(data);
-  }
+  //       body: JSON.stringify(obj),
+  //     }
+  //   );
+  //   const data = await response.json();
+  //   console.log(data);
+  // }
 
   async function addPart(event) {
     if (value) {
@@ -68,6 +81,7 @@ function GerenciarEstoque() {
         description: description,
         quantity: quantity,
       };
+      // console.log(post);
 
       postArray.unshift(post);
 
@@ -79,15 +93,15 @@ function GerenciarEstoque() {
       const obj = {
         name: post.text,
         quantity: post.quantity,
-        section: "corda",
+        section: parteNome,
         price: post.price,
         description: post.description,
       };
       const response = await fetch(
-        "https://sevenguitars.herokuapp.com/deletePart",
+        "https://sevenguitars.herokuapp.com/registerPart",
         {
           method: "POST",
-          credentials: "include",
+          // credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
@@ -104,6 +118,28 @@ function GerenciarEstoque() {
       addPart();
     }
   }
+
+  const mapPecas = () => {
+    return partesArray.map((parte, index) => (
+      <option value={parte.name} key={index}>{parte.name}</option>
+    ));
+  }
+
+  // function mapByUserType(userType) {  
+  //   return navBarPerUser[userType].map((x) => (
+  //     <Link to={ "/" + x.toLowerCase().replace(/\s+/g, '')}>
+  //       <Button
+  //         fontSize={"md"}
+  //         color={"white"}
+  //         fontWeight={400}
+  //         variant={"link"}
+  //       >
+  //         {x}
+  //       </Button>
+  //     </Link>
+  //   ));
+  // }
+  
 
   return (
     <ChakraProvider theme={theme}>
@@ -138,12 +174,10 @@ function GerenciarEstoque() {
               boxShadow="lg"
               bgColor="white"
             >
-              <form onSubmit={() => addPart()}>
+              <form onSubmit={addPart}>
                 <FormControl isRequired>
-                  <Select placeholder="Selecione a peça">
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
+                  <Select placeholder="Selecione a peça" onChange={(e) => setParteNome(e.target.value)}>
+                    {mapPecas()}
                   </Select>
 
                   <Input
@@ -152,6 +186,8 @@ function GerenciarEstoque() {
                     placeholder="Insira a variação"
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    autoComplete="off"
                   />
                 </FormControl>
                 <FormControl mt={6} isRequired>
@@ -161,6 +197,8 @@ function GerenciarEstoque() {
                     placeholder="Insira o preço"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    autoComplete="off"
                   />
                 </FormControl>
                 <FormControl mt={6} isRequired>
@@ -170,12 +208,17 @@ function GerenciarEstoque() {
                     placeholder="Insira a descrição"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    autoComplete="off"
                   />
                 </FormControl>
 
                 <Button width="full" mt={4} type="submit">
                   Inserir
                 </Button>
+                {/* <Button width="full" mt={4} type="test" onClick={console.log(parteNome)}>
+                  Teste
+                </Button> */}
               </form>
             </Box>
           </Box>
