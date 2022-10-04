@@ -18,7 +18,6 @@ import {
   Input,
 } from "@chakra-ui/react";
 import MainNav from "../components/MainNav";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 function GerenciarEstoque() {
   let [parteNome, setParteNome] = useState(''); // TODO: change later
@@ -28,7 +27,7 @@ function GerenciarEstoque() {
   let [description, setDescription] = useState('');
   let [quantity, setQuantity] = useState(0);
   let [sorted, setSorted] = useState(false);
-  let [partesArray, setPartesArray] = useState([]);
+  let [secoesArray, setSecoesArray] = useState([]);
   let [postArray, setPostArray] = useState([]);
 
   // useEffect(() => {
@@ -48,7 +47,7 @@ function GerenciarEstoque() {
         "https://sevenguitars.herokuapp.com/getAllSections"
       );
       const data = response.data;
-      setPartesArray(data);
+      setSecoesArray(data);
     };
     fetchData();
   }, []);
@@ -73,6 +72,7 @@ function GerenciarEstoque() {
   // }
 
   async function addPart(event) {
+    event.preventDefault();
     if (value) {
       const post = {
         id: id,
@@ -81,9 +81,8 @@ function GerenciarEstoque() {
         description: description,
         quantity: quantity,
       };
-      // console.log(post);
 
-      postArray.unshift(post);
+      // postArray.unshift(post);
 
       setValue("");
       setPrice("");
@@ -120,7 +119,7 @@ function GerenciarEstoque() {
   }
 
   const mapPecas = () => {
-    return partesArray.map((parte, index) => (
+    return secoesArray.map((parte, index) => (
       <option value={parte.name} key={index}>{parte.name}</option>
     ));
   }
@@ -216,9 +215,6 @@ function GerenciarEstoque() {
                 <Button width="full" mt={4} type="submit">
                   Inserir
                 </Button>
-                {/* <Button width="full" mt={4} type="test" onClick={console.log(parteNome)}>
-                  Teste
-                </Button> */}
               </form>
             </Box>
           </Box>
@@ -233,9 +229,7 @@ function GerenciarEstoque() {
           bgColor="red"
           direction="column"
         >
-
-          <Heading> aaa </Heading>
-          {CadastroEstoque()}
+          {CadastroEstoque(secoesArray)}
         </Flex>
       </Flex>
     </ChakraProvider>
