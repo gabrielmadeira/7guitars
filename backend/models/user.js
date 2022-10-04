@@ -10,6 +10,8 @@ module.exports = class User {
             req.session.loggedIn = true;
             req.session.name = findUser.name;
             req.session.admin = findUser.isAdmin;
+            req.session.email = findUser.email;
+            req.session.adress = findUser.adress;
           }
           res.send(check);
         });
@@ -29,6 +31,7 @@ module.exports = class User {
           cpf: req.body.cpf,
           email: req.body.email,
           hash: hashedPassword,
+          adress:req.body.adress,
           isAdmin: req.body.admin,
         });
         await newUser.save();

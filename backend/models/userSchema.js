@@ -5,6 +5,7 @@ const schema = mongoose.Schema({
   cpf: String,
   email: String,
   hash: String,
+  adress:String,
   isAdmin: Boolean,
 });
 module.exports = mongoose.model('User', schema);

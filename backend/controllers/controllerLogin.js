@@ -12,6 +12,15 @@ exports.isAdmin = async (req, res,next) => {
         res.send(false)
     }
 }
+exports.isLoggedIn = async (req, res,next) => {
+    console.log(req.session)
+    if(req.session.loggedIn){
+        next()
+    }
+    else{
+        res.send(false)
+    }
+}
 
 
 exports.registerUser = async (req, res) => {

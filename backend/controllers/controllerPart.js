@@ -14,7 +14,9 @@ exports.deletePart = async (req, res) => {
 }
 exports.updateQuantity = async (req, res) => {
     part.updateQuantity(req,res)
-
+}
+exports.findPartsbyidList = async (req, res) => {
+    part.findPartsbyidList(req,res)
 }
 
 

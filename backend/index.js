@@ -14,7 +14,7 @@ mongoose
   .then(() => {
     const app = express();
     const corsOptions = {
-      // origin: 'http://127.0.0.1:3001',
+      origin: 'https://sguitars.herokuapp.com',
       optionsSuccessStatus: 200,
       credentials: true,
     };
@@ -30,5 +30,5 @@ mongoose
       })
     );
     app.use(routes);
-    app.listen(3000);
+    app.listen(process.env.PORT || 5000);
   });
